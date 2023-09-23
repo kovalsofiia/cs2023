@@ -88,6 +88,7 @@ namespace Lab1_C__Koval_SA2_09_2023
             {
                 Console.WriteLine("No elements were found.");
             }
+            Console.ReadKey();
         }
     }
 }
