@@ -72,18 +72,29 @@ namespace Lab1_C__Koval_SA2_09_2023
             }
 
             int countOfNumbers = 0;
-            foreach (int value in queueOfNumbers)
+
+            //foreach (int value in queueOfNumbers)
+            //{
+            //    if (value % 7 == 0)
+            //    {
+            //        countOfNumbers++;
+            //    }
+            //}
+
+            for (int i = 0; i < queueOfNumbers.Count; i++)
             {
-                if (value % 7 == 0)
+                if (queueOfNumbers.Dequeue() % 7 ==0)
                 {
                     countOfNumbers++;
                 }
+                
             }
+
             if (countOfNumbers != 0)
             {
                 Console.WriteLine("The amount of elements which are multiple of seven is : {0}.", countOfNumbers);
-
             }
+
             else
             {
                 Console.WriteLine("No elements were found.");

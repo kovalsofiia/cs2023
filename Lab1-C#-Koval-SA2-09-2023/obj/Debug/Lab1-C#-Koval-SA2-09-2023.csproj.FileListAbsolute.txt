@@ -5,3 +5,10 @@ D:\Documents\uzhnu 3 semester\C#\New folder\Lab1-C#-Koval-SA2-09-2023\obj\Debug\
 D:\Documents\uzhnu 3 semester\C#\New folder\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.csproj.CoreCompileInputs.cache
 D:\Documents\uzhnu 3 semester\C#\New folder\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.exe
 D:\Documents\uzhnu 3 semester\C#\New folder\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.pdb
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\bin\Debug\Lab1-C#-Koval-SA2-09-2023.exe.config
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\bin\Debug\Lab1-C#-Koval-SA2-09-2023.exe
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\bin\Debug\Lab1-C#-Koval-SA2-09-2023.pdb
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.csproj.AssemblyReference.cache
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.csproj.CoreCompileInputs.cache
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.exe
+D:\Documents\uzhnu 3 semester\C#\Labs\Lab1-C#-Koval-SA2-09-2023\obj\Debug\Lab1-C#-Koval-SA2-09-2023.pdb
