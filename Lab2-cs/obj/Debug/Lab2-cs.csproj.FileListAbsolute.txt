@@ -1,0 +1,11 @@
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\bin\Debug\Lab2-cs.exe.config
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\bin\Debug\Lab2-cs.exe
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\bin\Debug\Lab2-cs.pdb
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\obj\Debug\Lab2-cs.csproj.AssemblyReference.cache
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\obj\Debug\Lab2-cs.csproj.CoreCompileInputs.cache
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\obj\Debug\Lab2-cs.exe
+D:\Documents\uzhnu 3 semester\C#\New folder\Lab2-cs\obj\Debug\Lab2-cs.pdb
+D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs\obj\Debug\Lab2-cs.csproj.AssemblyReference.cache
+D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs\obj\Debug\Lab2-cs.csproj.CoreCompileInputs.cache
+D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs\obj\Debug\Lab2-cs.exe
+D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs\obj\Debug\Lab2-cs.pdb
