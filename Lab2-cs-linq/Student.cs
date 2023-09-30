@@ -17,10 +17,10 @@ namespace Lab2_cs_linq
         public string Surname { get; set; }
         public string Group { get; set; }
 
-        //public override string ToString()
-        //{
-        //    string result = $"Student {Surname} with Id {Id} belongs to group {Group}";
-        //    return result;
-        //}
+        public override string ToString()
+        {
+            string result = $"Id {Id}: Student {Surname} belongs to the group: {Group}";
+            return result;
+        }
     }
 }

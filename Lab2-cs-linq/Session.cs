@@ -20,5 +20,7 @@ namespace Lab2_cs_linq
         public string TypeOfControl { get; set; }
         public double EndScore { get; set; }
         public DateTime ControlDate { get; set; }
+
+
     }
 }
