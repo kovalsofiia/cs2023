@@ -19,7 +19,7 @@ namespace Lab2_cs_linq
 
 
         //a)+++вивести коди студентів, прізвища яких починаються на задану літеру.
-        //b) вивести назви груп, не більше двох різних студентів яких отримали двійки на іспиті у поточному році.
+        //b)+++ вивести назви груп, не більше двох різних студентів яких отримали двійки на іспиті у поточному році.
         //c)+++ вивести прізвища студентів та їх підсумковий рейтинг(середній бал за всіма предметами), впорядкувавши запису по рейтингу у порядку спадання.
 
 
@@ -28,27 +28,83 @@ namespace Lab2_cs_linq
         static void Main(string[] args)
         {
             PrintStudents();
-            //TaskA();
+            TaskA();
             TaskB();
-            //TaskC();
+            TaskC();
         }
+
 
         public static void TaskA()
         {
+            Console.WriteLine("================================================================================");
             Console.Write("Write a first letter for selection of student`s surnames : ");
             var startingLetter = Console.ReadLine();
             var selectedStudents = student_list
                 .Where(student => student.Surname.StartsWith(startingLetter, StringComparison.OrdinalIgnoreCase))
                 .Select(student => student.Id);
 
-
             foreach (var code in selectedStudents)
             {
-                Console.WriteLine("Student Id: " + code);
+                Console.WriteLine($"Student Id: {code}");
             }
             Console.WriteLine();
         }
         public static void TaskB()
+        {
+            Console.WriteLine("================================================================================");
+            var mergedStudentSessionData = from student in student_list
+                                           join session in session
+                                           on student.Id equals session.StudentId
+                                           where session.ControlDate.Year == DateTime.Now.Year && session.SubjectsScores.Average() < 60
+                                           select new
+                                           {
+                                               student.Group,
+                                               student.Id
+                                           };
+
+            var groupsWithTwoFailuresOrLess = mergedStudentSessionData
+                .GroupBy(data => data.Group)
+                .Where(group => group.Select(st => st.Id).Distinct().Count() <= 5)
+                .Select(group => group.Key)
+                .ToList();
+
+            Console.WriteLine("Groups where students average rating is less than 60(it means they got an F):");
+            foreach (var groupName in groupsWithTwoFailuresOrLess)
+            {
+                Console.WriteLine(groupName);
+            }
+            Console.WriteLine();
+        }
+        public static void TaskC()
+        {
+            Console.WriteLine("================================================================================");
+            var mergedStudentSessionData = from student in student_list
+                                           join session in session
+                                           on student.Id equals session.StudentId
+                                           select new
+                                           {
+                                               student.Surname,
+                                               session.SubjectsScores,
+                                           };
+
+            var studentRating = mergedStudentSessionData
+                .Select(data => new
+                {
+                    data.Surname,
+                    AverageScore = data.SubjectsScores.Average()
+                })
+                .OrderByDescending(student => student.AverageScore)
+                .ToList();
+
+            
+            Console.WriteLine("Rating at the end of semester:");
+            foreach (var student in studentRating)
+            {
+                Console.WriteLine($"Surname: {student.Surname}, Average score: {student.AverageScore:F2}");
+            }
+            Console.WriteLine();
+        }
+        public static void PrintStudents()
         {
             var mergedStudentSessionData = from student in student_list
                                            join session in session
@@ -58,52 +114,22 @@ namespace Lab2_cs_linq
                                                student.Id,
                                                student.Surname,
                                                student.Group,
-                                               session.SubjectName,
+                                               session.SubjectsScores,
                                                session.TypeOfControl,
-                                               session.EndScore,
                                                session.ControlDate,
                                            };
 
-        }
-        public static void TaskC()
-        {
-            var mergedStudentSessionData = from student in student_list
-                                           join session in session
-                                           on student.Id equals session.StudentId
-                                           select new
-                                           {
-                                               student.Surname,
-                                               session.EndScore,
-                                           };
-
-            var studentRating = mergedStudentSessionData
-                .GroupBy(data => data.Surname)
-                .Select(group => new
-                {
-                    Surname = group.Key,
-                    AverageScore = group.Average(data => data.EndScore),
-                    
-                })
-                .OrderByDescending(student => student.AverageScore)
-                .ToList();
-
-            
-            Console.WriteLine("Surnames and their ending scores on their chosen subjects:");
-
-            foreach (var student in studentRating)
-            {
-                Console.WriteLine($"Surname: {student.Surname}, Score: {student.AverageScore:F0}");
-            }
-            
-
-        }
-        public static void PrintStudents()
-        {
             foreach (var student in student_list)
             {
                 Console.WriteLine(student.ToString());
             }
             Console.WriteLine();
+
+            //foreach (var st in mergedStudentSessionData)
+            //{
+            //    Console.WriteLine($"Id {st.Id}: Student {st.Surname}, who belongs to group {st.Group}, has average score: {st.SubjectsScores.Average():F2}\n");
+            //}
+
         }
 
         public static List<Session> session = new List<Session>()
@@ -111,161 +137,201 @@ namespace Lab2_cs_linq
             new Session()
             {
                     StudentId = 1,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        33,65,60
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 35,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 2,
-                    SubjectName = "Mathematical Analysis",
-                    TypeOfControl = "Test",
-                    EndScore = 72,
+                    SubjectsScores = new List<double>
+                    {
+                        72,80,65
+                    },
+                    TypeOfControl = "Exam",
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 3,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        85,90,88
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 61,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 4,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        100,100,100
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 63,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 5,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        75,64,79
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 71,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 6,
-                    SubjectName = "Mathematical Analysis",
-                    TypeOfControl = "Test",
-                    EndScore = 78,
+                    SubjectsScores = new List<double>
+                    {
+                        86,94,98
+                    },
+                    TypeOfControl = "Exam",
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 7,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        65,78,88
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 95,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 8,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        91,90,98
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 65,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 9,
-                    SubjectName = "Mathematical Analysis",
-                    TypeOfControl = "Test",
-                    EndScore = 32,
+                    SubjectsScores = new List<double>
+                    {
+                        93,100,88
+                    },
+                    TypeOfControl = "Exam",
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 10,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        92,65,87
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 89,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 11,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        81,70,68
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 45,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 12,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        93,100,60
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 62,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 13,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        87,50,65
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 76,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 14,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        81,90,76
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 27,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 15,
-                    SubjectName = "Mathematical Analysis",
-                    TypeOfControl = "Test",
-                    EndScore = 87,
+                    SubjectsScores = new List<double>
+                    {
+                        61,69,73
+                    },
+                    TypeOfControl = "Exam",
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 16,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        92,93,98
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 93,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 17,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        91,99,98
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 99,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 18,
-                    SubjectName = "Linear Algebra",
+                    SubjectsScores = new List<double>
+                    {
+                        100,100,98
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 100 ,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 19,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        93,90,87
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 93,
                     ControlDate = DateTime.Now,
             },
             new Session()
             {
                     StudentId = 20,
-                    SubjectName = "Probability & Statistics",
+                    SubjectsScores = new List<double>
+                    {
+                        56,50,63
+                    },
                     TypeOfControl = "Exam",
-                    EndScore = 58,
                     ControlDate = DateTime.Now,
             }
         };

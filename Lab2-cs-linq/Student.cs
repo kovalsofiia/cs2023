@@ -19,7 +19,7 @@ namespace Lab2_cs_linq
 
         public override string ToString()
         {
-            string result = $"Id {Id}: Student {Surname} belongs to the group: {Group}";
+            string result = $"Id {Id}: Student {Surname} belongs to the group of {Group}";
             return result;
         }
     }

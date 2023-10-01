@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,11 +17,9 @@ namespace Lab2_cs_linq
         //            дату складання.
 
         public int StudentId { get; set; }
-        public string SubjectName { get; set; }
+        public List<double> SubjectsScores { get; set; }
         public string TypeOfControl { get; set; }
-        public double EndScore { get; set; }
         public DateTime ControlDate { get; set; }
-
-
+        public double average {  get; set; }
     }
 }
