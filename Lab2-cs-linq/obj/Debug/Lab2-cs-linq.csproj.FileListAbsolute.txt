@@ -1,7 +1,0 @@
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\bin\Debug\Lab2-cs-linq.exe.config
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\bin\Debug\Lab2-cs-linq.exe
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\bin\Debug\Lab2-cs-linq.pdb
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\obj\Debug\Lab2-cs-linq.csproj.AssemblyReference.cache
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\obj\Debug\Lab2-cs-linq.csproj.CoreCompileInputs.cache
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\obj\Debug\Lab2-cs-linq.exe
-D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab2-cs-linq\obj\Debug\Lab2-cs-linq.pdb
