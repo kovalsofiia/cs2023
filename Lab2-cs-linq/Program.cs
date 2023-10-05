@@ -55,7 +55,7 @@ namespace Lab2_cs_linq
             var mergedStudentSessionData = from student in student_list
                                            join session in session
                                            on student.Id equals session.StudentId
-                                           where session.ControlDate.Year == DateTime.Now.Year && session.SubjectsScores.Average() < 60
+                                           where session.ControlDate.Year == DateTime.Now.Year && session.TypeOfControl == "Test" && session.SubjectsScores.Min() < 60
                                            select new
                                            {
                                                student.Group,
@@ -64,11 +64,11 @@ namespace Lab2_cs_linq
 
             var groupsWithTwoFailuresOrLess = mergedStudentSessionData
                 .GroupBy(data => data.Group)
-                .Where(group => group.Select(st => st.Id).Distinct().Count() <= 5)
+                .Where(group => group.Select(st => st.Id).Distinct().Count() <= 2)
                 .Select(group => group.Key)
                 .ToList();
 
-            Console.WriteLine("Groups where students average rating is less than 60(it means they got an F):");
+            Console.WriteLine("Groups where students got an F): ");
             foreach (var groupName in groupsWithTwoFailuresOrLess)
             {
                 Console.WriteLine(groupName);
@@ -141,7 +141,7 @@ namespace Lab2_cs_linq
                     {
                         33,65,60
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -151,7 +151,7 @@ namespace Lab2_cs_linq
                     {
                         72,80,65
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -201,7 +201,7 @@ namespace Lab2_cs_linq
                     {
                         65,78,88
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -211,7 +211,7 @@ namespace Lab2_cs_linq
                     {
                         91,90,98
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -231,7 +231,7 @@ namespace Lab2_cs_linq
                     {
                         92,65,87
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -261,7 +261,7 @@ namespace Lab2_cs_linq
                     {
                         87,50,65
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -271,7 +271,7 @@ namespace Lab2_cs_linq
                     {
                         81,90,76
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             },
             new Session()
@@ -331,7 +331,7 @@ namespace Lab2_cs_linq
                     {
                         56,50,63
                     },
-                    TypeOfControl = "Exam",
+                    TypeOfControl = "Test",
                     ControlDate = DateTime.Now,
             }
         };
@@ -455,7 +455,7 @@ namespace Lab2_cs_linq
             {
                 Id= 20,
                 Surname = "Poole",
-                Group = "Software Engineering"
+                Group = "Computer Science"
             },
         };
 
