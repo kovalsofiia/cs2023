@@ -1,0 +1,26 @@
+[
+  {
+    "Surname": "Bondarenko",
+    "Destination": "Lviv",
+    "LuggageAmount": 3,
+    "LuggageWeight": 15.5
+  },
+  {
+    "Surname": "Sich",
+    "Destination": "Ivano-Frankivsk",
+    "LuggageAmount": 1,
+    "LuggageWeight": 7.0
+  },
+  {
+    "Surname": "Korolovych",
+    "Destination": "Uzhhorod",
+    "LuggageAmount": 2,
+    "LuggageWeight": 9.8
+  },
+  {
+    "Surname": "Korolovych",
+    "Destination": "Lviv",
+    "LuggageAmount": 5,
+    "LuggageWeight": 17.8
+  }
+]

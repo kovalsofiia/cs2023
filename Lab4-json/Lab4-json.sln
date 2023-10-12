@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4-json", "Lab4-json.csproj", "{03989B84-EF38-4958-9ACA-36375061E255}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03989B84-EF38-4958-9ACA-36375061E255}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03989B84-EF38-4958-9ACA-36375061E255}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03989B84-EF38-4958-9ACA-36375061E255}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03989B84-EF38-4958-9ACA-36375061E255}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE462680-F921-4CDF-8E1F-D6310974F813}
+	EndGlobalSection
+EndGlobal
