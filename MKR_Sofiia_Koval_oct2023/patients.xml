@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<ArrayOfPatient xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Patient>
+    <SurnameP>Bowen</SurnameP>
+    <BDayP>1955-08-23T00:00:00</BDayP>
+    <Diagnos>Pneumonia</Diagnos>
+    <SurnameDoctor>Walker</SurnameDoctor>
+    <DepartmentDoctor>Intense therapy</DepartmentDoctor>
+    <LeaveDate>2023-10-18T00:00:00</LeaveDate>
+  </Patient>
+  <Patient>
+    <SurnameP>Parks</SurnameP>
+    <BDayP>1949-11-09T00:00:00</BDayP>
+    <Diagnos>Heart decease</Diagnos>
+    <SurnameDoctor>Walker</SurnameDoctor>
+    <DepartmentDoctor>Intense therapy</DepartmentDoctor>
+    <LeaveDate>2023-07-29T00:00:00</LeaveDate>
+  </Patient>
+  <Patient>
+    <SurnameP>Williams</SurnameP>
+    <BDayP>2003-08-14T00:00:00</BDayP>
+    <Diagnos>High blood preasure</Diagnos>
+    <SurnameDoctor>Sullivan</SurnameDoctor>
+    <DepartmentDoctor>Family therapy</DepartmentDoctor>
+    <LeaveDate>2023-09-13T00:00:00</LeaveDate>
+  </Patient>
+  <Patient>
+    <SurnameP>Callivan</SurnameP>
+    <BDayP>2022-12-07T00:00:00</BDayP>
+    <Diagnos>Sickness</Diagnos>
+    <SurnameDoctor>Cherry</SurnameDoctor>
+    <DepartmentDoctor>Children Therapy</DepartmentDoctor>
+    <LeaveDate>2023-09-27T00:00:00</LeaveDate>
+  </Patient>
+  <Patient>
+    <SurnameP>Lane</SurnameP>
+    <BDayP>2018-09-23T00:00:00</BDayP>
+    <Diagnos>Strong allergy</Diagnos>
+    <SurnameDoctor>Cherry</SurnameDoctor>
+    <DepartmentDoctor>Children Therapy</DepartmentDoctor>
+    <LeaveDate>2023-08-30T00:00:00</LeaveDate>
+  </Patient>
+</ArrayOfPatient>

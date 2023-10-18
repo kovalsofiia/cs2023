@@ -57,7 +57,7 @@ namespace MKR_Sofiia_Koval_oct2023
             Console.WriteLine($"Task2. Distinct count of dianosis that doctor with specialization {targetSpecialization} has given is {distinctDiagnosisCount}");
 
 
-            //ExportToXmlFileFromList(listOfPatients, "C:\\Users\\sofiu\\AppData\\Local\\Temp\\oqu1iqir..xml");
+            //ExportToXmlFileFromList(listOfPatients, "D:\\Documents\\uzhnu 3 semester\\C#\\repos\\cs2023\\MKR_Sofiia_Koval_oct2023\\patients.xml");
 
 
         }
