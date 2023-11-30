@@ -33,6 +33,8 @@ namespace Lab5
 //        h) запит з використанням дій по модифікації записів.
         static void Main(string[] args)
         {
+            const string connection_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab5\SA2_Koval_Sofiia.mdf"";Integrated Security=True;Connect Timeout=30";
+            using ()
         }
     }
 }

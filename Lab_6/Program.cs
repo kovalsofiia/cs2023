@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_6.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,13 +10,11 @@ namespace Lab_6
 {
     internal class Program
     {
+        const string connection_string = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""D:\Documents\uzhnu 3 semester\C#\repos\cs2023\Lab5\SA2_Koval_Sofiia.mdf"";Integrated Security=True;Connect Timeout=30";
         public static void FUNC()
         {
 
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Documents\\uzhnu 3 semester\\C#\\repos\\cs2023\\Lab5\\SA2_Koval_Sofiia.mdf\";Integrated Security=True;Connect Timeout=30";
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connection_string))
             {
                 connection.Open();
 
@@ -69,9 +68,8 @@ namespace Lab_6
 
         static void ExecuteQuery(string query)
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"D:\\Documents\\uzhnu 3 semester\\C#\\repos\\cs2023\\Lab5\\SA2_Koval_Sofiia.mdf\";Integrated Security=True;Connect Timeout=30";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            
+            using (SqlConnection connection = new SqlConnection(connection_string))
             {
                 connection.Open();
 
@@ -94,14 +92,27 @@ namespace Lab_6
 
         public static void lab6()
         {
+            Console.WriteLine("Enter faculty to search: ");
+            string fac = Console.ReadLine();
             // a) Simple select query
-            string selectQueryA = "SELECT * FROM students WHERE Faculty = 'Engineering'";
+            string selectQueryA = $"SELECT * FROM students WHERE Faculty = '{fac}'";
 
+
+
+            Console.WriteLine("Enter which column starts with what for item: ");
+            string what = Console.ReadLine();
+            string fullname = Console.ReadLine();
             // b) Using special functions: LIKE, IS NULL, IN, BETWEEN
-            string selectQueryB1 = "SELECT * FROM students WHERE Surname LIKE 'Sm%'";
-            string selectQueryB2 = "SELECT * FROM students WHERE WorkPlace IS NULL";
-            string selectQueryB3 = "SELECT * FROM students WHERE WorkPlace IN ('Global Innovations', 'Research Labs')";
-            string selectQueryB4 = "SELECT * FROM students WHERE BirthYear BETWEEN 2000 AND 2001";
+            string selectQueryB1 = $"SELECT * FROM students WHERE {what} LIKE '{fullname}%'";
+
+            Console.WriteLine("Enter what column for item is null: ");
+            string smth = Console.ReadLine();
+            string selectQueryB2 = $"SELECT * FROM students WHERE {smth} IS NULL";
+
+            //Console.WriteLine("Enter what is null to search: ");
+            //string smth = Console.ReadLine();
+            //string selectQueryB3 = "SELECT * FROM students WHERE WorkPlace IN ('Global Innovations', 'Research Labs')";
+            //string selectQueryB4 = "SELECT * FROM students WHERE BirthYear BETWEEN 2000 AND 2001";
 
             // c) Query with a complex criterion
             string selectQueryC = "SELECT * FROM students WHERE (GroupUni = 'Group2' AND AverageScore < 90 AND City = 'City3')";
@@ -128,15 +139,15 @@ namespace Lab_6
             ExecuteQuery(selectQueryA);
             ExecuteQuery(selectQueryB1);
             ExecuteQuery(selectQueryB2);
-            ExecuteQuery(selectQueryB3);
-            ExecuteQuery(selectQueryB4);
-            ExecuteQuery(selectQueryC);
-            ExecuteQuery(selectQueryD);
-            ExecuteQuery(selectQueryE);
-            ExecuteQuery(selectQueryF);
-            ExecuteQuery(selectQueryG1);
-            ExecuteQuery(selectQueryG2);
-            ExecuteQuery(updateQueryH);
+            //ExecuteQuery(selectQueryB3);
+            //ExecuteQuery(selectQueryB4);
+            //ExecuteQuery(selectQueryC);
+            //ExecuteQuery(selectQueryD);
+            //ExecuteQuery(selectQueryE);
+            //ExecuteQuery(selectQueryF);
+            //ExecuteQuery(selectQueryG1);
+            //ExecuteQuery(selectQueryG2);
+            //ExecuteQuery(updateQueryH);
         }
         static void Main(string[] args)
         {
@@ -148,4 +159,3 @@ namespace Lab_6
         }
     }
 }
-
