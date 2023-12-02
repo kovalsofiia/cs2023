@@ -68,7 +68,7 @@ namespace Lab_6
 
         static void ExecuteQuery(string query)
         {
-            
+
             using (SqlConnection connection = new SqlConnection(connection_string))
             {
                 connection.Open();
@@ -92,70 +92,98 @@ namespace Lab_6
 
         public static void lab6()
         {
-            Console.WriteLine("Enter faculty to search: ");
-            string fac = Console.ReadLine();
-            // a) Simple select query
-            string selectQueryA = $"SELECT * FROM students WHERE Faculty = '{fac}'";
+
+            Console.WriteLine("Hello. Please enter numbers what you want to do: \n 1 - simple select, \n 2 - using spec func, \n 3 - complex criterion, 4 - unique values, \n 5 - calculated field, 6 - grouping query, \n 7 - sorting, \n 8 - update");
+
+            int option = Convert.ToInt32(Console.ReadLine());
+
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("A. Simple select query: ");
+                    Console.WriteLine("Column name: ");
+                    string Acolumn = Console.ReadLine();
+                    Console.WriteLine("Column value: ");
+                    string Avalue = Console.ReadLine();
+                    // a) Simple select query
+                    string selectQueryA = $"SELECT * FROM students WHERE {Acolumn} = '{Avalue}'";
+                    ExecuteQuery(selectQueryA);
+                    break;
+                case 2:
+
+                    Console.WriteLine("B. Using special functions: LIKE, IS NULL, IN, BETWEEN: ");
+                    Console.WriteLine("B1.(LIKE) Column name: ");
+                    string BColumn = Console.ReadLine();
+                    Console.WriteLine("B1.(LIKE) Column value: ");
+                    string Bvalue = Console.ReadLine();
+                    // b) Using special functions: LIKE, IS NULL, IN, BETWEEN
+                    string selectQueryB1 = $"SELECT * FROM students WHERE {BColumn} LIKE '{Bvalue}%'";
 
 
+                    Console.WriteLine("B2.(IS NULL) Column name: ");
+                    string B2Column = Console.ReadLine();
+                    string selectQueryB2 = $"SELECT * FROM students WHERE {B2Column} IS NULL";
 
-            Console.WriteLine("Enter which column starts with what for item: ");
-            string what = Console.ReadLine();
-            string fullname = Console.ReadLine();
-            // b) Using special functions: LIKE, IS NULL, IN, BETWEEN
-            string selectQueryB1 = $"SELECT * FROM students WHERE {what} LIKE '{fullname}%'";
+                    Console.WriteLine("B3.(IN)");
+                    string selectQueryB3 = $"SELECT * FROM students WHERE WorkPlace IN ('Global Innovations', 'Research Labs')";
 
-            Console.WriteLine("Enter what column for item is null: ");
-            string smth = Console.ReadLine();
-            string selectQueryB2 = $"SELECT * FROM students WHERE {smth} IS NULL";
+                    Console.WriteLine("B4.(BETWEEN)");
+                    string selectQueryB4 = $"SELECT * FROM students WHERE BirthYear BETWEEN 2000 AND 2001";
 
-            //Console.WriteLine("Enter what is null to search: ");
-            //string smth = Console.ReadLine();
-            //string selectQueryB3 = "SELECT * FROM students WHERE WorkPlace IN ('Global Innovations', 'Research Labs')";
-            //string selectQueryB4 = "SELECT * FROM students WHERE BirthYear BETWEEN 2000 AND 2001";
-
-            // c) Query with a complex criterion
-            string selectQueryC = "SELECT * FROM students WHERE (GroupUni = 'Group2' AND AverageScore < 90 AND City = 'City3')";
-
-            // d) Query with unique values
-            string selectQueryD = "SELECT DISTINCT Faculty FROM students";
-
-            // e) Query using a calculated field
-            string selectQueryE = "SELECT Surname, AverageScore / 10 AS Total10Score FROM students";
-
-            // f) Grouping query
-            string selectQueryF = "SELECT GroupUni, AVG(AverageScore) AS AverageScore FROM students GROUP BY GroupUni HAVING AVG(AverageScore) > 80";
-
-            // g) Sorting query in ascending and descending order
-            string selectQueryG1 = "SELECT Surname, GroupUni, AverageScore FROM students ORDER BY AverageScore ASC";
-            string selectQueryG2 = "SELECT Surname, GroupUni, AverageScore FROM students ORDER BY AverageScore DESC";
-
-            // h) Update query
-            string updateQueryH = "UPDATE students SET AverageScore = AverageScore / 10";
-
-
-
-
-            ExecuteQuery(selectQueryA);
-            ExecuteQuery(selectQueryB1);
-            ExecuteQuery(selectQueryB2);
-            //ExecuteQuery(selectQueryB3);
-            //ExecuteQuery(selectQueryB4);
-            //ExecuteQuery(selectQueryC);
-            //ExecuteQuery(selectQueryD);
-            //ExecuteQuery(selectQueryE);
-            //ExecuteQuery(selectQueryF);
-            //ExecuteQuery(selectQueryG1);
-            //ExecuteQuery(selectQueryG2);
-            //ExecuteQuery(updateQueryH);
+                    ExecuteQuery(selectQueryB1);
+                    ExecuteQuery(selectQueryB2);
+                    ExecuteQuery(selectQueryB3);
+                    ExecuteQuery(selectQueryB4);
+                    break;
+                case 3:
+                    // c) Query with a complex criterion
+                    string selectQueryC = "SELECT * FROM students WHERE (GroupUni = 'Group2' AND AverageScore < 90 AND City = 'City3')";
+                    ExecuteQuery(selectQueryC);
+                    break;
+                case 4:
+                    Console.WriteLine("D. Unique values");
+                    Console.WriteLine("Column name: ");
+                    string DColumn = Console.ReadLine();
+                    // d) Query with unique values
+                    string selectQueryD = $"SELECT DISTINCT {DColumn} FROM students";
+                    ExecuteQuery(selectQueryD);
+                    break;
+                case 5:
+                    // e) Query using a calculated field
+                    string selectQueryE = "SELECT Surname, AverageScore / 10 AS Total10Score FROM students";
+                    ExecuteQuery(selectQueryE);
+                    break;
+                case 6:
+                    // f) Grouping query
+                    string selectQueryF = "SELECT GroupUni, AVG(AverageScore) AS AverageScore FROM students GROUP BY GroupUni HAVING AVG(AverageScore) > 80";
+                    ExecuteQuery(selectQueryF);
+                    break;
+                case 7:
+                    Console.WriteLine("Sort asc by: ");
+                    Console.WriteLine("Column name: ");
+                    string GColumn = Console.ReadLine();
+                    // g) Sorting query in ascending and descending order
+                    string selectQueryG1 = $"SELECT * FROM students ORDER BY {GColumn} ASC";
+                    ExecuteQuery(selectQueryG1);
+                    Console.WriteLine("Sort desc by: ");
+                    Console.WriteLine("Column name: ");
+                    string G2Column = Console.ReadLine();
+                    string selectQueryG2 = $"SELECT * FROM students ORDER BY {G2Column} DESC";
+                    ExecuteQuery(selectQueryG2);
+                    break;
+                case 8:
+                    // h) Update query
+                    string updateQueryH = "UPDATE students SET AverageScore = AverageScore / 10";
+                    ExecuteQuery(updateQueryH);
+                    break;
+                default:
+                    Console.WriteLine("Invalid option");
+                    break;
+            }
         }
         static void Main(string[] args)
         {
-
-
-            //FUNC();
             lab6();
-
         }
     }
 }
