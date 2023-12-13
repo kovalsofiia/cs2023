@@ -137,7 +137,7 @@ namespace Lab_6
                     break;
                 case 3:
                     // c) Query with a complex criterion
-                    string selectQueryC = "SELECT * FROM students WHERE (GroupUni = 'Group2' AND AverageScore < 90 AND City = 'City3')";
+                    string selectQueryC = "SELECT * FROM students WHERE (GroupUni = 'Group2' AND AverageScore < 90 AND City = 'New York')";
                     ExecuteQuery(selectQueryC);
                     break;
                 case 4:
@@ -173,7 +173,7 @@ namespace Lab_6
                     break;
                 case 8:
                     // h) Update query
-                    string updateQueryH = "UPDATE students SET AverageScore = AverageScore / 10";
+                    string updateQueryH = "UPDATE students SET AverageScore = AverageScore * 10";
                     ExecuteQuery(updateQueryH);
                     break;
                 default:
